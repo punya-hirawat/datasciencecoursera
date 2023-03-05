@@ -10,7 +10,7 @@ corr = function(directory, threshold = 0){
   
   df_cor = df_cor[complete.cases(df_cor), ]
   
-  df_cor <- df_cor[, .(nobs = .N, corr = cor(x = sulfate, y = nitrate)), by = ID][nobs > threshold]
+  df_cor <- df_cor[, .(corr = cor(x = sulfate, y = nitrate)), by = ID][.N > threshold]
   
   return(df_cor[, corr])
 }
